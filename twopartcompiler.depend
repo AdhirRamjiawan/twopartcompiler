@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1616016172 source:c:\users\adhir\documents\projects\twopartcompiler\main.cpp
+	<iostream>
+	<string>
+	<list>
+	<regex>
+
