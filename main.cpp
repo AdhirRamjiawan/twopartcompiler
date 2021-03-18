@@ -3,13 +3,15 @@
 #include <list>
 #include <regex>
 
+#include "CodeGenerator.h"
+
 using namespace std;
 
 int main()
 {
     string source = "value 1\nassign_to a\nprint a\nprint 32";
     list<string> lines;
-    list<string>::iterator linesIterator;
+    CodeGenerator *codeGen = new CodeGenerator();
 
     int lastKnownPosition = 0;
 
@@ -38,6 +40,8 @@ int main()
     }
     #endif
 
+    // TODO: create symbol table to validate variables and method names.
+
     // iterate through lines and execute code top to bottom.
     // this needs to change to code generation.
     for (auto line: lines)
@@ -47,16 +51,20 @@ int main()
 
         if (part1 == "print")
         {
+            // check if it's a literal or variable name
             if (regex_match(part2, regex("[a-zA-Z]+([a-zA-Z0-9])?")))
             {
                 cout << "printing out a variable" << endl;
             }
             else
             {
-                cout << part2;
+                //cout << part2;
+                codeGen->Add("cout << " + part2);
             }
         }
     }
+
+    cout << codeGen->Build() << endl;
 
     return 0;
 }

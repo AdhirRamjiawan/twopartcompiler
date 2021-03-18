@@ -1,7 +1,15 @@
 # depslib dependency file v1.0
-1616016172 source:c:\users\adhir\documents\projects\twopartcompiler\main.cpp
+1616048852 source:c:\users\adhir\documents\projects\twopartcompiler\main.cpp
 	<iostream>
 	<string>
 	<list>
 	<regex>
+	"CodeGenerator.h"
+
+1616050577 source:c:\users\adhir\documents\projects\twopartcompiler\codegenerator.cpp
+	"CodeGenerator.h"
+
+1616049384 c:\users\adhir\documents\projects\twopartcompiler\codegenerator.h
+	<string>
+	<iostream>
 
