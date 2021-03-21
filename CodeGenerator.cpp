@@ -17,6 +17,12 @@ CodeGenerator *CodeGenerator::Add(string codeLine)
     return this;
 }
 
+CodeGenerator *CodeGenerator::AddCout(string codeLine)
+{
+    this->UserCode += "cout << " + codeLine + ";\n";
+    return this;
+}
+
 string CodeGenerator::Build()
 {
     int placeholderIndex = this->CppCodeFile.find(this->CODE_PLACEHOLDER);

@@ -12,6 +12,7 @@ class CodeGenerator
         CodeGenerator();
         virtual ~CodeGenerator();
         CodeGenerator *Add(string codeLine);
+        CodeGenerator *AddCout(string codeLine);
         string Build();
 
     protected:

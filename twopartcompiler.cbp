@@ -15,6 +15,7 @@
 					<Add option="-g" />
 					<Add directory="include" />
 					<Add directory="./" />
+					<Add directory="../twopartcompiler" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -26,6 +27,7 @@
 					<Add option="-O2" />
 					<Add directory="include" />
 					<Add directory="./" />
+					<Add directory="../twopartcompiler" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -38,6 +40,8 @@
 		</Compiler>
 		<Unit filename="CodeGenerator.cpp" />
 		<Unit filename="CodeGenerator.h" />
+		<Unit filename="Symbol.cpp" />
+		<Unit filename="Symbol.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
