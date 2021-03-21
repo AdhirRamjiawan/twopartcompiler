@@ -5,6 +5,9 @@
 #include <string>
 #include <fstream>
 #include <cstdlib>
+#include <list>
+
+#include "Symbol.h"
 
 using namespace std;
 
@@ -12,15 +15,20 @@ class CodeGenerator
 {
     public:
         const string CODE_PLACEHOLDER = "<<CODE_PLACEHOLDER>>";
-        CodeGenerator();
+        CodeGenerator(list<string> *sourceLines);
         virtual ~CodeGenerator();
         CodeGenerator *Add(string codeLine);
         CodeGenerator *AddCout(string codeLine);
-        void Build();
+        void GenerateCode();
+        void CompileCode();
 
     protected:
 
     private:
+        list<Symbol> SymbolTable;
+        string GetFirstPart(string line);
+        string GetSecondPart(string line);
+        list<string> *SourceLines;
         string UserCode = "";
         const string CppCodeFile = R"(
             #include <iostream>
