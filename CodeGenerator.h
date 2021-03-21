@@ -1,7 +1,10 @@
 #ifndef CODEGENERATOR_H
 #define CODEGENERATOR_H
 
+#include <iostream>
 #include <string>
+#include <fstream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -13,7 +16,7 @@ class CodeGenerator
         virtual ~CodeGenerator();
         CodeGenerator *Add(string codeLine);
         CodeGenerator *AddCout(string codeLine);
-        string Build();
+        void Build();
 
     protected:
 

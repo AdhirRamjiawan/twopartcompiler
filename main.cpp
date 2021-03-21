@@ -96,7 +96,7 @@ int main()
         previousPart2 = part2;
     }
 
-    cout << codeGen->Build() << endl;
+    codeGen->Build();
 
     return 0;
 }

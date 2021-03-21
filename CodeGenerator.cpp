@@ -19,16 +19,25 @@ CodeGenerator *CodeGenerator::Add(string codeLine)
 
 CodeGenerator *CodeGenerator::AddCout(string codeLine)
 {
-    this->UserCode += "cout << " + codeLine + ";\n";
+    this->UserCode += "std::cout << " + codeLine + " << std::endl;\n";
     return this;
 }
 
-string CodeGenerator::Build()
+void CodeGenerator::Build()
 {
+    string fileName = "tmpCodeFile.cpp";
+    ofstream codeFile;
+    codeFile.open(fileName);
+
     int placeholderIndex = this->CppCodeFile.find(this->CODE_PLACEHOLDER);
     string userCode = this->UserCode;
     string cppCode = this->CppCodeFile;
     auto builtCode = cppCode.replace(placeholderIndex, this->CODE_PLACEHOLDER.length(), userCode);
 
-    return builtCode;
+    codeFile << builtCode << endl;
+    codeFile.close();
+
+    string command = "g++ " + fileName;
+    system(command.c_str());
+    remove(fileName.c_str());
 }
