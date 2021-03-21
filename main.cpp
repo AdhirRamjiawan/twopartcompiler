@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <list>
-#include <regex>
 
 #include "CodeGenerator.h"
 #include "Symbol.h"
@@ -10,14 +9,6 @@ using namespace std;
 
 string GetFirstPart(string line);
 string GetSecondPart(string line);
-SymbolType GetSymbolType(string part);
-Symbol GetSymbolFromTable(list<Symbol> symbolTable, string symbolName);
-
-const string REGEX_VARIABLE = "[a-zA-Z]+([a-zA-Z0-9])*";
-const string REGEX_BOOLEAN = "false | true";
-const string REGEX_INTEGER = "[0-9]+";
-const string REGEX_STRING = "\"(.)+\"";
-const string REGEX_FLOAT = "[0-9]+\\.[0-9]+";
 
 int main()
 {
@@ -71,7 +62,7 @@ int main()
             // check if it's a literal or variable name
             if (regex_match(part2, regex(REGEX_VARIABLE)))
             {
-                Symbol symbol = GetSymbolFromTable(symbolTable, part2);
+                Symbol symbol = Symbol::GetSymbolFromTable(symbolTable, part2);
 
                 if (symbol.Type != SymbolType::Null)
                 {
@@ -89,7 +80,7 @@ int main()
         }
         else if (part1 == "value")
         {
-            previousPart2SymbolType = GetSymbolType(part2);
+            previousPart2SymbolType = Symbol::GetSymbolType(part2);
         }
 
         previousPart1 = part1;
@@ -99,18 +90,6 @@ int main()
     codeGen->Build();
 
     return 0;
-}
-
-Symbol GetSymbolFromTable(list<Symbol> symbolTable, string symbolName)
-{
-    for (auto symbol : symbolTable)
-    {
-        if (symbol.Name == symbolName)
-        {
-            return symbol;
-        }
-    }
-    return Symbol(NULL, NULL, SymbolType::Null);
 }
 
 string GetFirstPart(string line)
@@ -123,28 +102,4 @@ string GetSecondPart(string line)
     return line.substr(line.find(' ') +1, line.length());
 }
 
-SymbolType GetSymbolType(string part)
-{
-    if (regex_match(part, regex(REGEX_VARIABLE)))
-    {
-        return SymbolType::Variable;
-    }
-    else if (regex_match(part, regex(REGEX_BOOLEAN)))
-    {
-        return SymbolType::Bool;
-    }
-    else if (regex_match(part, regex(REGEX_STRING)))
-    {
-        return SymbolType::String;
-    }
-    else if (regex_match(part, regex(REGEX_INTEGER)))
-    {
-        return SymbolType::Int;
-    }
-    else if (regex_match(part, regex(REGEX_FLOAT)))
-    {
-        return SymbolType::Float;
-    }
 
-    return SymbolType::Null;
-}
