@@ -8,6 +8,7 @@
 #include <list>
 
 #include "Symbol.h"
+#include "LanguageToken.h"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ class CodeGenerator
 {
     public:
         const string CODE_PLACEHOLDER = "<<CODE_PLACEHOLDER>>";
-        CodeGenerator(list<string> *sourceLines);
+        CodeGenerator(list<LanguageToken> *tokens);
         virtual ~CodeGenerator();
         CodeGenerator *Add(string codeLine);
         CodeGenerator *AddCout(string codeLine);
@@ -28,7 +29,7 @@ class CodeGenerator
         list<Symbol> SymbolTable;
         string GetFirstPart(string line);
         string GetSecondPart(string line);
-        list<string> *SourceLines;
+        list<LanguageToken> *Tokens;
         string UserCode = "";
         const string CppCodeFile = R"(
             #include <iostream>

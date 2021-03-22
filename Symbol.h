@@ -7,7 +7,7 @@
 
 using namespace std;
 
-enum SymbolType
+enum class SymbolType
 {
     Int = 0,
     String = 1,

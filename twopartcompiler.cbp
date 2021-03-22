@@ -40,6 +40,11 @@
 		</Compiler>
 		<Unit filename="CodeGenerator.cpp" />
 		<Unit filename="CodeGenerator.h" />
+		<Unit filename="Language.h" />
+		<Unit filename="Lexer.cpp" />
+		<Unit filename="Lexer.h" />
+		<Unit filename="Parser.cpp" />
+		<Unit filename="Parser.h" />
 		<Unit filename="Symbol.cpp" />
 		<Unit filename="Symbol.h" />
 		<Unit filename="main.cpp" />

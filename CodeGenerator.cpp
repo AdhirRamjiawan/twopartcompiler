@@ -1,13 +1,15 @@
 #include "CodeGenerator.h"
+#include "Language.h"
+#include "LanguageToken.h"
 
-CodeGenerator::CodeGenerator(list<string> *sourceLines)
+CodeGenerator::CodeGenerator(list<LanguageToken> *tokens)
 {
-    this->SourceLines = sourceLines;
+    this->Tokens = tokens;
 }
 
 CodeGenerator::~CodeGenerator()
 {
-    delete this->SourceLines;
+    delete this->Tokens;
 }
 
 
@@ -25,19 +27,19 @@ CodeGenerator *CodeGenerator::AddCout(string codeLine)
 
 void CodeGenerator::GenerateCode()
 {
-    string previousPart1 = "";
-    string previousPart2 = "";
+    LanguageToken previousToken;
     SymbolType previousPart2SymbolType;
 
-    for (auto line: *this->SourceLines)
+    for (auto token: *this->Tokens)
     {
-        string part1 = GetFirstPart(line);
-        string part2 = GetSecondPart(line);
-
-        if (part1 == "print")
+        if (token.Type == LanguageTokenType::Call)
         {
-            // check if it's a literal or variable name
-            if (regex_match(part2, regex(REGEX_VARIABLE)))
+            if (token.Value == "print")
+            {
+
+            }
+            /*// check if it's a literal or variable name
+            if (regex_match(token.Value, regex(REGEX_VARIABLE)))
             {
                 Symbol symbol = Symbol::GetSymbolFromTable(this->SymbolTable, part2);
 
@@ -49,19 +51,18 @@ void CodeGenerator::GenerateCode()
             else
             {
                 this->AddCout(part2);
-            }
+            }*/
         }
-        else if (part1 == "assign_to")
+        else if (token.Type == LanguageTokenType::AssignTo)
         {
-            this->SymbolTable.push_back(Symbol(part2, previousPart2, previousPart2SymbolType));
+            this->SymbolTable.push_back(Symbol(token.Value, previousToken.Value, previousPart2SymbolType));
         }
-        else if (part1 == "value")
+        else if (token.Type == LanguageTokenType::Value)
         {
-            previousPart2SymbolType = Symbol::GetSymbolType(part2);
+            previousPart2SymbolType = Symbol::GetSymbolType(token.Value);
         }
 
-        previousPart1 = part1;
-        previousPart2 = part2;
+        previousToken = token;
     }
 }
 
