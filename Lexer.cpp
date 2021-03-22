@@ -11,10 +11,9 @@ Lexer::~Lexer()
     //dtor
 }
 
-
-list<LanguageToken> Lexer::ReadSource(string source)
+vector<LanguageToken> Lexer::ReadSource(string source)
 {
-    list<LanguageToken> tokens;
+    vector<LanguageToken> tokens;
     int lastKnownPosition = 0;
 
     // split source into separate lines

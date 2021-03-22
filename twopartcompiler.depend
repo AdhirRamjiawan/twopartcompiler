@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1616425463 source:c:\users\adhir\documents\projects\twopartcompiler\main.cpp
+1616442629 source:c:\users\adhir\documents\projects\twopartcompiler\main.cpp
 	<iostream>
 	<string>
-	<list>
+	<vector>
 	"CodeGenerator.h"
 	"Parser.h"
 	"Lexer.h"
@@ -13,37 +13,37 @@
 	"Language.h"
 	"LanguageToken.h"
 
-1616422710 c:\users\adhir\documents\projects\twopartcompiler\codegenerator.h
+1616442586 c:\users\adhir\documents\projects\twopartcompiler\codegenerator.h
 	<iostream>
 	<string>
 	<fstream>
 	<cstdlib>
-	<list>
+	<vector>
 	"Symbol.h"
 	"LanguageToken.h"
 	<iostream>
 
-1616369043 source:c:\users\adhir\documents\projects\twopartcompiler\symbol.cpp
+1616442665 source:c:\users\adhir\documents\projects\twopartcompiler\symbol.cpp
 	"Symbol.h"
 
-1616424346 c:\users\adhir\documents\projects\twopartcompiler\symbol.h
+1616442689 c:\users\adhir\documents\projects\twopartcompiler\symbol.h
 	<regex>
 	<string>
-	<list>
+	<vector>
 
 1616416732 source:c:\users\adhir\documents\projects\twopartcompiler\parser.cpp
 	"Parser.h"
 
-1616416746 c:\users\adhir\documents\projects\twopartcompiler\parser.h
-	<list>
+1616442682 c:\users\adhir\documents\projects\twopartcompiler\parser.h
+	<vector>
 	<string>
 
-1616425862 source:c:\users\adhir\documents\projects\twopartcompiler\lexer.cpp
+1616442620 source:c:\users\adhir\documents\projects\twopartcompiler\lexer.cpp
 	"Lexer.h"
 	"LanguageToken.h"
 
-1616423984 c:\users\adhir\documents\projects\twopartcompiler\lexer.h
-	<list>
+1616442602 c:\users\adhir\documents\projects\twopartcompiler\lexer.h
+	<vector>
 	<string>
 	"Language.h"
 	"LanguageToken.h"

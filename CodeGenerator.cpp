@@ -2,16 +2,15 @@
 #include "Language.h"
 #include "LanguageToken.h"
 
-CodeGenerator::CodeGenerator(list<LanguageToken> *tokens)
+CodeGenerator::CodeGenerator(CodeTree *codeTree)
 {
-    this->Tokens = tokens;
+    this->Tree = codeTree;
 }
 
 CodeGenerator::~CodeGenerator()
 {
-    delete this->Tokens;
+    delete this->Tree;
 }
-
 
 CodeGenerator *CodeGenerator::Add(string codeLine)
 {
@@ -27,42 +26,24 @@ CodeGenerator *CodeGenerator::AddCout(string codeLine)
 
 void CodeGenerator::GenerateCode()
 {
-    LanguageToken previousToken;
-    SymbolType previousPart2SymbolType;
-
-    for (auto token: *this->Tokens)
+    for (auto codeBlock: this->Tree->CodeBlocks)
     {
-        if (token.Type == LanguageTokenType::Call)
+
+
+        for (auto functionCall : codeBlock->)
         {
-            if (token.Value == "print")
+            cout << "function call => " << functionCall->FunctionName << endl;
+
+            if (functionCall->FunctionName == "print")
             {
 
             }
-            /*// check if it's a literal or variable name
-            if (regex_match(token.Value, regex(REGEX_VARIABLE)))
-            {
-                Symbol symbol = Symbol::GetSymbolFromTable(this->SymbolTable, part2);
 
-                if (symbol.Type != SymbolType::Null)
-                {
-                    this->AddCout(symbol.StrValue);
-                }
+            for (auto parameter : functionCall->Parameters)
+            {
+                cout << "parameter: " << parameter->Name << ", type: " << (int)parameter->Type << ", value: " << parameter->Value << endl;
             }
-            else
-            {
-                this->AddCout(part2);
-            }*/
         }
-        else if (token.Type == LanguageTokenType::AssignTo)
-        {
-            this->SymbolTable.push_back(Symbol(token.Value, previousToken.Value, previousPart2SymbolType));
-        }
-        else if (token.Type == LanguageTokenType::Value)
-        {
-            previousPart2SymbolType = Symbol::GetSymbolType(token.Value);
-        }
-
-        previousToken = token;
     }
 }
 

@@ -3,7 +3,7 @@
 
 #include <regex>
 #include <string>
-#include <list>
+#include <vector>
 
 using namespace std;
 
@@ -18,11 +18,7 @@ enum class SymbolType
     Null = 9999
 };
 
-const string REGEX_VARIABLE = "[a-zA-Z]+([a-zA-Z0-9])*";
-const string REGEX_BOOLEAN = "false | true";
-const string REGEX_INTEGER = "[0-9]+";
-const string REGEX_STRING = "\"(.)+\"";
-const string REGEX_FLOAT = "[0-9]+\\.[0-9]+";
+
 
 class Symbol
 {
@@ -36,7 +32,7 @@ class Symbol
         template <typename T>
         T GetTypedValue();
         static SymbolType GetSymbolType(string part);
-        static Symbol GetSymbolFromTable(list<Symbol> symbolTable, string symbolName);
+        static Symbol GetSymbolFromTable(vector<Symbol> symbolTable, string symbolName);
 
     protected:
 

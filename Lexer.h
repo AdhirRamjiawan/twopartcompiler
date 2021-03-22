@@ -2,7 +2,7 @@
 #define LEXER_H
 
 
-#include <list>
+#include <vector>
 #include <string>
 
 #include "Language.h"
@@ -16,7 +16,7 @@ class Lexer
     public:
         Lexer();
         virtual ~Lexer();
-        list<LanguageToken> ReadSource(string source);
+        vector<LanguageToken> ReadSource(string source);
 
     protected:
 

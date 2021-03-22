@@ -5,10 +5,10 @@
 #include <string>
 #include <fstream>
 #include <cstdlib>
-#include <list>
+#include <vector>
 
 #include "Symbol.h"
-#include "LanguageToken.h"
+#include "CodeTree.h"
 
 using namespace std;
 
@@ -16,7 +16,7 @@ class CodeGenerator
 {
     public:
         const string CODE_PLACEHOLDER = "<<CODE_PLACEHOLDER>>";
-        CodeGenerator(list<LanguageToken> *tokens);
+        CodeGenerator(CodeTree codeTree);
         virtual ~CodeGenerator();
         CodeGenerator *Add(string codeLine);
         CodeGenerator *AddCout(string codeLine);
@@ -26,10 +26,10 @@ class CodeGenerator
     protected:
 
     private:
-        list<Symbol> SymbolTable;
+        vector<Symbol> SymbolTable;
         string GetFirstPart(string line);
         string GetSecondPart(string line);
-        list<LanguageToken> *Tokens;
+        CodeTree *Tree;
         string UserCode = "";
         const string CppCodeFile = R"(
             #include <iostream>

@@ -20,6 +20,12 @@ enum class LanguageTokenType
     Root = 10,
     Include = 11,
     Print = 12,
+    Identifier = 13,
+    Int = 14,
+    String = 15,
+    Float = 16,
+    Bool = 17,
+    Literal = 18,
     Null = 9999
 };
 

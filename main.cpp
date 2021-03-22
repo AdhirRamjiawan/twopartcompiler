@@ -1,15 +1,16 @@
 #include <iostream>
 #include <string>
-#include <list>
+#include <vector>
 
 #include "CodeGenerator.h"
 #include "Parser.h"
 #include "Lexer.h"
 #include "LanguageToken.h"
+#include "CodeTree.h"
 
 using namespace std;
 
-list<string> ParseSource(string source);
+vector<string> ParseSource(string source);
 
 int main()
 {
@@ -17,15 +18,16 @@ int main()
 
     // TODO: create compiler pipeline to manage and run compiler phases
     Lexer *lexer = new Lexer();
-    Parser *parser = new Parser();
-    list<LanguageToken> tokens = lexer->ReadSource(source);
-    CodeGenerator *codeGen = new CodeGenerator(&tokens);
+    vector<LanguageToken> tokens = lexer->ReadSource(source);
+    Parser *parser = new Parser(&tokens);
+    CodeTree *codeTree = parser->BuildCodeTree();
+    CodeGenerator *codeGen = new CodeGenerator(codeTree);
 
 
-    for (auto token : tokens)
+    /*for (auto token : tokens)
     {
         cout << (int)token.Type << ", " << token.Value << endl;
-    }
+    }*/
 
     // output lines to console, TODO: make this debug method
     #ifdef DEBUG

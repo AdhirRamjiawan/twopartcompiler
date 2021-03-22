@@ -38,13 +38,25 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="CodeBlock.cpp" />
+		<Unit filename="CodeBlock.h" />
 		<Unit filename="CodeGenerator.cpp" />
 		<Unit filename="CodeGenerator.h" />
+		<Unit filename="CodeTree.cpp" />
+		<Unit filename="CodeTree.h" />
+		<Unit filename="FunctionCall.cpp" />
+		<Unit filename="FunctionCall.h" />
 		<Unit filename="Language.h" />
+		<Unit filename="LanguageToken.cpp" />
+		<Unit filename="LanguageToken.h" />
 		<Unit filename="Lexer.cpp" />
 		<Unit filename="Lexer.h" />
+		<Unit filename="Parameter.cpp" />
+		<Unit filename="Parameter.h" />
 		<Unit filename="Parser.cpp" />
 		<Unit filename="Parser.h" />
+		<Unit filename="Statement.cpp" />
+		<Unit filename="Statement.h" />
 		<Unit filename="Symbol.cpp" />
 		<Unit filename="Symbol.h" />
 		<Unit filename="main.cpp" />

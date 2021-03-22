@@ -23,7 +23,7 @@ T Symbol::GetTypedValue()
     return (T)*(this->StrValue());
 }
 
-Symbol Symbol::GetSymbolFromTable(list<Symbol> symbolTable, string symbolName)
+Symbol Symbol::GetSymbolFromTable(vector<Symbol> symbolTable, string symbolName)
 {
     for (auto symbol : symbolTable)
     {
