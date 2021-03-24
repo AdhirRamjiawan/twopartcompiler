@@ -3,6 +3,9 @@
 
 #include <vector>
 
+#include "Parameter.h"
+#include "Statement.h"
+
 class FunctionCall : public Statement
 {
     public:
@@ -10,6 +13,7 @@ class FunctionCall : public Statement
         virtual ~FunctionCall();
         vector<Parameter> Parameters;
         string FunctionName;
+        vector<LanguageToken> GetLanguageTokens();
 
     protected:
 

@@ -2,10 +2,16 @@
 
 Statement::Statement()
 {
-    //ctor
+
 }
 
 Statement::~Statement()
 {
-    //dtor
+
+}
+
+vector<LanguageToken> Statement::GetLanguageTokens()
+{
+    vector<LanguageToken> temp;
+    return temp;
 }

@@ -16,7 +16,7 @@ class CodeGenerator
 {
     public:
         const string CODE_PLACEHOLDER = "<<CODE_PLACEHOLDER>>";
-        CodeGenerator(CodeTree codeTree);
+        CodeGenerator(CodeTree *codeTree);
         virtual ~CodeGenerator();
         CodeGenerator *Add(string codeLine);
         CodeGenerator *AddCout(string codeLine);

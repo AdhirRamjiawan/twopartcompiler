@@ -1,9 +1,7 @@
 #include "Parser.h"
+#include "Symbol.h"
+#include <iostream>
 
-Parser::Parser()
-{
-    //ctor
-}
 Parser::Parser(vector<LanguageToken> *tokens)
 {
     this->Tokens = tokens;
@@ -26,7 +24,8 @@ CodeTree* Parser::BuildCodeTree()
     //for (auto token: *this->Tokens)
     while(tokenIterator < this->Tokens->end())
     {
-
+        LanguageToken token = *tokenIterator;
+        std::cout << "token: " << (int)token.Type << ", " << token.Value << std::endl;
 
         /*LanguageToken token = *tokenIterator;
         if (token.Type == LanguageTokenType::Call)

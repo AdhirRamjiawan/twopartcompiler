@@ -5,6 +5,7 @@
 #include <string>
 
 #include "CodeTree.h"
+#include "LanguageToken.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ class Parser
     protected:
 
     private:
-        vector<LanguageTokens> *Tokens;
+        vector<LanguageToken> *Tokens;
 };
 
 #endif // PARSER_H

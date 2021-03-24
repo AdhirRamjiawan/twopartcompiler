@@ -37,7 +37,7 @@ Symbol Symbol::GetSymbolFromTable(vector<Symbol> symbolTable, string symbolName)
 
 SymbolType Symbol::GetSymbolType(string part)
 {
-    if (regex_match(part, regex(REGEX_VARIABLE)))
+    /*if (regex_match(part, regex(REGEX_VARIABLE)))
     {
         return SymbolType::Variable;
     }
@@ -56,7 +56,7 @@ SymbolType Symbol::GetSymbolType(string part)
     else if (regex_match(part, regex(REGEX_FLOAT)))
     {
         return SymbolType::Float;
-    }
+    }*/
 
     return SymbolType::Null;
 }

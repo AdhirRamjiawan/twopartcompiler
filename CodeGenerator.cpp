@@ -1,6 +1,8 @@
 #include "CodeGenerator.h"
 #include "Language.h"
 #include "LanguageToken.h"
+#include "FunctionCall.h"
+#include "Statement.h"
 
 CodeGenerator::CodeGenerator(CodeTree *codeTree)
 {
@@ -28,20 +30,23 @@ void CodeGenerator::GenerateCode()
 {
     for (auto codeBlock: this->Tree->CodeBlocks)
     {
-
-
-        for (auto functionCall : codeBlock->)
+        for (auto statement: codeBlock.Statements)
         {
-            cout << "function call => " << functionCall->FunctionName << endl;
-
-            if (functionCall->FunctionName == "print")
+            if (is_base_of<FunctionCall, Statement>::value)
             {
+                FunctionCall *functionCall = dynamic_cast<FunctionCall*>(&statement);
 
-            }
+                cout << "function call => " << functionCall->FunctionName << endl;
 
-            for (auto parameter : functionCall->Parameters)
-            {
-                cout << "parameter: " << parameter->Name << ", type: " << (int)parameter->Type << ", value: " << parameter->Value << endl;
+                if (functionCall->FunctionName == "print")
+                {
+
+                }
+
+                for (auto parameter : functionCall->Parameters)
+                {
+                    cout << "parameter: " << parameter.Name << ", type: " << (int)parameter.Type << ", value: " << parameter.Value << endl;
+                }
             }
         }
     }

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1616442629 source:c:\users\adhir\documents\projects\twopartcompiler\main.cpp
+1616620345 source:c:\users\adhir\documents\projects\twopartcompiler\main.cpp
 	<iostream>
 	<string>
 	<vector>
@@ -7,38 +7,45 @@
 	"Parser.h"
 	"Lexer.h"
 	"LanguageToken.h"
+	"CodeTree.h"
 
-1616424443 source:c:\users\adhir\documents\projects\twopartcompiler\codegenerator.cpp
+1616483558 source:c:\users\adhir\documents\projects\twopartcompiler\codegenerator.cpp
 	"CodeGenerator.h"
 	"Language.h"
 	"LanguageToken.h"
+	"FunctionCall.h"
+	"Statement.h"
 
-1616442586 c:\users\adhir\documents\projects\twopartcompiler\codegenerator.h
+1616481033 c:\users\adhir\documents\projects\twopartcompiler\codegenerator.h
 	<iostream>
 	<string>
 	<fstream>
 	<cstdlib>
 	<vector>
 	"Symbol.h"
-	"LanguageToken.h"
+	"CodeTree.h"
 	<iostream>
 
-1616442665 source:c:\users\adhir\documents\projects\twopartcompiler\symbol.cpp
+1616482104 source:c:\users\adhir\documents\projects\twopartcompiler\symbol.cpp
 	"Symbol.h"
 
-1616442689 c:\users\adhir\documents\projects\twopartcompiler\symbol.h
+1616449147 c:\users\adhir\documents\projects\twopartcompiler\symbol.h
 	<regex>
 	<string>
 	<vector>
 
-1616416732 source:c:\users\adhir\documents\projects\twopartcompiler\parser.cpp
+1616620518 source:c:\users\adhir\documents\projects\twopartcompiler\parser.cpp
 	"Parser.h"
+	"Symbol.h"
+	<iostream>
 
-1616442682 c:\users\adhir\documents\projects\twopartcompiler\parser.h
+1616481052 c:\users\adhir\documents\projects\twopartcompiler\parser.h
 	<vector>
 	<string>
+	"CodeTree.h"
+	"LanguageToken.h"
 
-1616442620 source:c:\users\adhir\documents\projects\twopartcompiler\lexer.cpp
+1616443904 source:c:\users\adhir\documents\projects\twopartcompiler\lexer.cpp
 	"Lexer.h"
 	"LanguageToken.h"
 
@@ -48,13 +55,48 @@
 	"Language.h"
 	"LanguageToken.h"
 
-1616425929 c:\users\adhir\documents\projects\twopartcompiler\language.h
+1616449206 c:\users\adhir\documents\projects\twopartcompiler\language.h
 	<string>
 	<regex>
 
 1616421396 source:c:\users\adhir\documents\projects\twopartcompiler\languagetoken.cpp
 	"LanguageToken.h"
 
-1616424339 c:\users\adhir\documents\projects\twopartcompiler\languagetoken.h
+1616450136 c:\users\adhir\documents\projects\twopartcompiler\languagetoken.h
 	<string>
+
+1616446070 source:c:\users\adhir\documents\projects\twopartcompiler\codeblock.cpp
+	"CodeBlock.h"
+
+1616446560 c:\users\adhir\documents\projects\twopartcompiler\codeblock.h
+	<vector>
+	"Statement.h"
+
+1616619639 c:\users\adhir\documents\projects\twopartcompiler\statement.h
+	<vector>
+	"LanguageToken.h"
+
+1616443630 source:c:\users\adhir\documents\projects\twopartcompiler\codetree.cpp
+	"CodeTree.h"
+
+1616446133 c:\users\adhir\documents\projects\twopartcompiler\codetree.h
+	<vector>
+	"CodeBlock.h"
+
+1616449799 source:c:\users\adhir\documents\projects\twopartcompiler\parameter.cpp
+	"Parameter.h"
+
+1616449774 c:\users\adhir\documents\projects\twopartcompiler\parameter.h
+	"Language.h"
+
+1616620149 source:c:\users\adhir\documents\projects\twopartcompiler\statement.cpp
+	"Statement.h"
+
+1616620030 source:c:\users\adhir\documents\projects\twopartcompiler\functioncall.cpp
+	"FunctionCall.h"
+
+1616620094 c:\users\adhir\documents\projects\twopartcompiler\functioncall.h
+	<vector>
+	"Parameter.h"
+	"Statement.h"
 
