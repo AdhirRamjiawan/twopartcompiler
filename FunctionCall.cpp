@@ -4,7 +4,7 @@
 FunctionCall::FunctionCall()
 {
     //ctor
-    this->Parameters = vector<Parameter>();
+    this->Parameters = vector<Parameter*>();
 }
 
 FunctionCall::~FunctionCall()
@@ -20,15 +20,15 @@ vector<LanguageToken> FunctionCall::GetLanguageTokens()
 
     for (auto param : this->Parameters)
     {
-        tokens.push_back(LanguageToken(LanguageTokenType::Param, param.Value));
+        tokens.push_back(LanguageToken(LanguageTokenType::Param, param->Value));
 
-        if (param.IsLiteral)
+        if (param->IsLiteral)
         {
-            tokens.push_back(LanguageToken(LanguageTokenType::Literal, param.Value));
+            tokens.push_back(LanguageToken(LanguageTokenType::Literal, param->Value));
         }
         else
         {
-            tokens.push_back(LanguageToken(LanguageTokenType::Identifier, param.Value));
+            tokens.push_back(LanguageToken(LanguageTokenType::Identifier, param->Value));
         }
     }
 

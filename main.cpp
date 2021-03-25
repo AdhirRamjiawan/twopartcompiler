@@ -15,7 +15,7 @@ vector<string> ParseSource(string source);
 int main()
 {
     //string source = "value 108\nassign_to a\ncall print\nparam a\ncall print\nparam 32";
-    string source = "call print\nparam 32";
+    string source = "call print\nparam 32\ncall print\nparam false";
 
     // TODO: create compiler pipeline to manage and run compiler phases
     Lexer *lexer = new Lexer();

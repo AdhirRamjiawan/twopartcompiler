@@ -34,7 +34,7 @@ void CodeGenerator::GenerateCode()
         vector<Statement*>::iterator statementIterator = codeBlock.Statements.begin();
 
         //for (auto &statement: codeBlock.Statements)
-        for (; statementIterator < codeBlock.Statements.end(); statementIterator++)
+        for (; statementIterator < codeBlock.Statements.end(); )
         {
             Statement *statement = *statementIterator;
 
@@ -49,11 +49,15 @@ void CodeGenerator::GenerateCode()
 
                 }
 
-                for (auto parameter : functionCall->Parameters)
+                cout << "parameter count " << functionCall->Parameters.size() << endl;
+
+                for (auto &parameter : functionCall->Parameters)
                 {
-                    cout << "parameter: " << parameter.Name << ", type: " << (int)parameter.Type << ", value: " << parameter.Value << endl;
+                    cout << "parameter: " << parameter->Name << ", type: " << (int)parameter->Type << ", value: " << parameter->Value << ", isLiteral " << parameter->IsLiteral << endl;
                 }
             }
+
+            statementIterator++;
         }
     }
 }

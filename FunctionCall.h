@@ -11,7 +11,7 @@ class FunctionCall : public Statement
     public:
         FunctionCall();
         virtual ~FunctionCall();
-        vector<Parameter> Parameters;
+        vector<Parameter*> Parameters;
         string FunctionName;
         vector<LanguageToken> GetLanguageTokens();
 

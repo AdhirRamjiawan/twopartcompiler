@@ -43,24 +43,47 @@ CodeTree* Parser::BuildCodeTree()
 
                 std::cout << "token: " << (int)token.Type << ", " << token.Value << std::endl;
 
+                tokenIterator++;
                 while (tokenIterator < this->Tokens->end())
                 {
                     token = *tokenIterator;
+
+                    std::cout << "token: " << (int)token.Type << ", " << token.Value << std::endl;
 
                     if (token.Type != LanguageTokenType::Param)
                     {
                         break;
                     }
 
-                    Parameter parameter;
-                    parameter.Name = token.Value;
-                    parameter.Value = token.Value;
-                    parameter.IsLiteral = (token.Type == LanguageTokenType::Int ||
+                    tokenIterator++;
+                    token = *tokenIterator;
+
+                    Parameter *parameter = new Parameter();
+                    parameter->Name = token.Value;
+                    parameter->Value = token.Value;
+                    parameter->IsLiteral = (token.Type == LanguageTokenType::Int ||
                                            token.Type == LanguageTokenType::Bool ||
                                            token.Type == LanguageTokenType::Float ||
                                            token.Type == LanguageTokenType::String);
 
+                    switch (token.Type)
+                    {
+                    case LanguageTokenType::Int:
+                        parameter->Type = LanguageDataTypes::Int;
+                        break;
+                    case LanguageTokenType::Bool:
+                        parameter->Type = LanguageDataTypes::Bool;
+                        break;
+                    case LanguageTokenType::Float:
+                        parameter->Type = LanguageDataTypes::Float;
+                        break;
+                    case LanguageTokenType::String:
+                        parameter->Type = LanguageDataTypes::String;
+                        break;
+                    }
+
                    functionCall->Parameters.push_back(parameter);
+                   tokenIterator++;
                 }
                 codeBlock.Statements.push_back(functionCall);
                 codeTree->CodeBlocks.push_back(codeBlock);
