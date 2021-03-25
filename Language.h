@@ -23,6 +23,7 @@ const string REGEX_LANGUAGE_BOOLEAN     = "false | true";
 const string REGEX_LANGUAGE_INTEGER     = "[0-9]+";
 const string REGEX_LANGUAGE_STRING      = "\"(.)+\"";
 const string REGEX_LANGUAGE_FLOAT       = "[0-9]+\\.[0-9]+";
+const string REGEX_LANGUAGE_PRINT       = "print";
 
 enum class LanguageDataTypes
 {

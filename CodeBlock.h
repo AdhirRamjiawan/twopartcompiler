@@ -9,7 +9,7 @@ class CodeBlock
     public:
         CodeBlock();
         virtual ~CodeBlock();
-        vector<Statement> Statements;
+        vector<Statement*> Statements;
 
     protected:
 

@@ -103,7 +103,14 @@ LanguageTokenType Lexer::GetTokenType(string strToken)
     {
         return LanguageTokenType::Include;
     }
-
+    else if (regex_match(strToken, regex(REGEX_LANGUAGE_INTEGER)))
+    {
+        return LanguageTokenType::Int;
+    }
+    else if (regex_match(strToken, regex(REGEX_LANGUAGE_PRINT)))
+    {
+        return LanguageTokenType::Print;
+    }
     return LanguageTokenType::Null;
 }
 

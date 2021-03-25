@@ -28,15 +28,21 @@ CodeGenerator *CodeGenerator::AddCout(string codeLine)
 
 void CodeGenerator::GenerateCode()
 {
-    for (auto codeBlock: this->Tree->CodeBlocks)
+    for (auto &codeBlock: this->Tree->CodeBlocks)
     {
-        for (auto statement: codeBlock.Statements)
-        {
-            if (is_base_of<FunctionCall, Statement>::value)
-            {
-                FunctionCall *functionCall = dynamic_cast<FunctionCall*>(&statement);
+        cout << "size of statements " << codeBlock.Statements.size() << endl;
+        vector<Statement*>::iterator statementIterator = codeBlock.Statements.begin();
 
-                cout << "function call => " << functionCall->FunctionName << endl;
+        //for (auto &statement: codeBlock.Statements)
+        for (; statementIterator < codeBlock.Statements.end(); statementIterator++)
+        {
+            Statement *statement = *statementIterator;
+
+            if (statement->Type == StatementType::FunctionCall)
+            {
+                FunctionCall *functionCall = dynamic_cast<FunctionCall*>(statement);
+
+                cout << "function call => " << (*functionCall).FunctionName << endl;
 
                 if (functionCall->FunctionName == "print")
                 {

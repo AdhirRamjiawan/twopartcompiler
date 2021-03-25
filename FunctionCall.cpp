@@ -4,6 +4,7 @@
 FunctionCall::FunctionCall()
 {
     //ctor
+    this->Parameters = vector<Parameter>();
 }
 
 FunctionCall::~FunctionCall()

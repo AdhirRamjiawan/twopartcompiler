@@ -1,5 +1,7 @@
 #include "Parser.h"
 #include "Symbol.h"
+#include "FunctionCall.h"
+
 #include <iostream>
 
 Parser::Parser(vector<LanguageToken> *tokens)
@@ -26,6 +28,44 @@ CodeTree* Parser::BuildCodeTree()
     {
         LanguageToken token = *tokenIterator;
         std::cout << "token: " << (int)token.Type << ", " << token.Value << std::endl;
+
+        if (token.Type == LanguageTokenType::Call)
+        {
+            CodeBlock codeBlock;
+
+            tokenIterator++;
+            if (tokenIterator != this->Tokens->end())
+            {
+                token = *tokenIterator;
+                FunctionCall *functionCall = new FunctionCall();
+                functionCall->Type = StatementType::FunctionCall;
+                functionCall->FunctionName = token.Value;
+
+                std::cout << "token: " << (int)token.Type << ", " << token.Value << std::endl;
+
+                while (tokenIterator < this->Tokens->end())
+                {
+                    token = *tokenIterator;
+
+                    if (token.Type != LanguageTokenType::Param)
+                    {
+                        break;
+                    }
+
+                    Parameter parameter;
+                    parameter.Name = token.Value;
+                    parameter.Value = token.Value;
+                    parameter.IsLiteral = (token.Type == LanguageTokenType::Int ||
+                                           token.Type == LanguageTokenType::Bool ||
+                                           token.Type == LanguageTokenType::Float ||
+                                           token.Type == LanguageTokenType::String);
+
+                   functionCall->Parameters.push_back(parameter);
+                }
+                codeBlock.Statements.push_back(functionCall);
+                codeTree->CodeBlocks.push_back(codeBlock);
+            }
+        }
 
         /*LanguageToken token = *tokenIterator;
         if (token.Type == LanguageTokenType::Call)

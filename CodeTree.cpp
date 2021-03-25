@@ -3,6 +3,7 @@
 CodeTree::CodeTree()
 {
     //ctor
+    this->CodeBlocks = vector<CodeBlock>();
 }
 
 CodeTree::~CodeTree()

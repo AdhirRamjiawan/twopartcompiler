@@ -40,7 +40,7 @@ int main()
 
     // TODO: create symbol table to validate variables and method names.
 
-    //codeGen->GenerateCode();
+    codeGen->GenerateCode();
     //codeGen->CompileCode();
 
     return 0;

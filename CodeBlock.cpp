@@ -3,6 +3,7 @@
 CodeBlock::CodeBlock()
 {
     //ctor
+    this->Statements = vector<Statement*>();
 }
 
 CodeBlock::~CodeBlock()

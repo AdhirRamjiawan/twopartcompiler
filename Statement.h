@@ -5,12 +5,17 @@
 
 #include "LanguageToken.h"
 
+enum class StatementType
+{
+    FunctionCall = 0
+};
+
 class Statement
 {
     public:
-        Statement();
-        ~Statement();
+        virtual ~Statement();
         virtual vector<LanguageToken> GetLanguageTokens();
+        StatementType Type;
     protected:
 
     private:
